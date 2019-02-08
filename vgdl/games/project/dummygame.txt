@@ -1,0 +1,21 @@
+BasicGame block_size=24
+  SpriteSet
+    wall > Immovable autotiling=true img=oryx/dirtWall_0
+    exitdoor > Immovable color=PINK img=oryx/door2
+    person > Resource color=WHITE limit=10 shrinkfactor=0.25 img=oryx/ghost1
+    moving >
+      goat > Chaser stype=avatar color=ORANGE speed=0.05 img=oryx/bird3
+      avatar  > MovingAvatar img=oryx/angel1_1
+  LevelMapping
+    E > exitdoor
+    x > person
+    c > goat
+  InteractionSet
+    moving wall > stepBack
+    moving boulder > stepBack
+    person avatar > collectResource scoreChange=-5
+    exitdoor avatar > killSprite
+
+  TerminationSet
+    SpriteCounter stype=avatar limit=0 win=False
+    SpriteCounter stype=exitdoor limit=0 win=True

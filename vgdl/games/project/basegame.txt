@@ -1,0 +1,33 @@
+BasicGame block_size=5
+    SpriteSet
+        wall > Immovable img=oryx/dirtWall_0
+        goal > Immovable img=oryx/door2
+        avatar > MovingAvatar img=oryx/orb1
+        hard > Walker speed=0.3
+          left_hard > orientation=LEFT img=oryx/orb3
+          right_hard > orientation=RIGHT img=oryx/orb3
+        soft > Walker speed=0.3
+          left_soft > orientation=LEFT img=oryx/orb3
+          right_soft > orientation=RIGHT img=oryx/orb3
+
+    InteractionSet
+        avatar goal > killSprite
+        hard goal > killSprite
+        hard wall > reverseDirection
+        avatar wall > stepBack
+        wall avatar > stepBack
+        hard avatar > reverseDirection
+        avatar hard > stepBack
+
+    LevelMapping
+        A > avatar
+        w > wall
+        g > goal
+        l > left_hard
+        i > left_soft
+        r > right_hard
+        t > right_soft
+
+    TerminationSet
+      SpriteCounter stype=avatar limit=0 win=False
+      SpriteCounter stype=goal limit=0 win=False

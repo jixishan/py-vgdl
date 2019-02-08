@@ -336,4 +336,3 @@ class AStarChaser(RandomNPC):
                     movement = LEFT
 
         self.physics.activeMovement(self, movement)
-
