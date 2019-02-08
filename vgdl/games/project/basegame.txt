@@ -1,23 +1,40 @@
-BasicGame block_size=5
+BasicGame block_size=10
     SpriteSet
         wall > Immovable img=oryx/dirtWall_0
         goal > Immovable img=oryx/door2
         avatar > MovingAvatar img=oryx/orb1
-        hard > Walker speed=0.3
-          left_hard > orientation=LEFT img=oryx/orb3
-          right_hard > orientation=RIGHT img=oryx/orb3
-        soft > Walker speed=0.3
-          left_soft > orientation=LEFT img=oryx/orb3
-          right_soft > orientation=RIGHT img=oryx/orb3
+        hard >
+          left_hard > Chaser stype=chased speed=0.2 img=oryx/orb2
+          right_hard > Walker speed=0.2 orientation=RIGHT img=oryx/orb2
+        soft >
+          left_soft > Chaser stype=chased speed=0.2 img=oryx/orb3
+          right_soft > Walker speed=0.2 orientation=RIGHT img=oryx/orb3
+        chased > Immovable img=oryx/dirtWall_0
 
     InteractionSet
         avatar goal > killSprite
-        hard goal > killSprite
-        hard wall > reverseDirection
         avatar wall > stepBack
-        wall avatar > stepBack
-        hard avatar > reverseDirection
-        avatar hard > stepBack
+        avatar chased > stepBack
+        avatar left_hard > stepBack
+        avatar left_right > stepBack
+
+        hard goal > killSprite
+        hard chased > killSprite
+
+        left_hard wall > stepBack
+        left_hard avatar > stepBack
+
+        right_hard wall > reverseDirection
+        right_hard avatar > reverseDirection
+
+        soft goal > killSprite
+        soft chased > killSprite
+
+        left_soft wall > stepBack
+        left_soft avatar > stepBack
+
+        right_soft wall > reverseDirection
+        right_soft avatar > reverseDirection
 
     LevelMapping
         A > avatar
@@ -27,6 +44,7 @@ BasicGame block_size=5
         i > left_soft
         r > right_hard
         t > right_soft
+        c > chased
 
     TerminationSet
       SpriteCounter stype=avatar limit=0 win=False

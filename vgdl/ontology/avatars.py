@@ -35,7 +35,7 @@ __all__ = [
 class MovingAvatar(VGDLSprite, Avatar):
     """ Default avatar, moves in the 4 cardinal directions. """
     color = WHITE
-    speed = 0.5 # type: Optional[int]
+    speed = 1 # type: Optional[int]
     is_avatar = True
     alternate_keys=False
 
