@@ -16,25 +16,17 @@ BasicGame block_size=10
         avatar wall > stepBack
         avatar chased > stepBack
         avatar left_hard > stepBack
-        avatar left_right > stepBack
+        avatar right_hard > stepBack
 
         hard goal > killSprite
         hard chased > killSprite
-
-        left_hard wall > stepBack
-        left_hard avatar > stepBack
-
-        right_hard wall > reverseDirection
-        right_hard avatar > reverseDirection
+        hard wall > stepBack
+        hard avatar > stepBack
 
         soft goal > killSprite
         soft chased > killSprite
-
-        left_soft wall > stepBack
-        left_soft avatar > stepBack
-
-        right_soft wall > reverseDirection
-        right_soft avatar > reverseDirection
+        soft wall > stepBack
+        soft avatar > stepBack
 
     LevelMapping
         A > avatar
